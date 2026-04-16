@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/quiz-page.css}">
+    <title>Quiz App | Questions</title>
+</head>
+<body>
+<!-- NavBar -->
+<div th:replace="~{fragments/navbar.html :: navbar}"></div>
+
+<div class="container main-container">
+    <header class="quiz-header">
+        <p class="eyebrow">Quiz in progress</p>
+        <h1>Choose the best answer</h1>
+        <p>Read each question carefully and select one option before submitting.</p>
+    </header>
+
+    <form th:action="@{submit}" th:object="${questionForm}" method="post">
+        <div class="question-box" th:each="question, it: *{questions}">
+            <div class="question-topline">
+                <span class="question-number" th:text="${it.index + 1}">1</span>
+                <p class="title" th:text="${question.title}"></p>
+            </div>
+
+            <div class="option">
+                <input type="radio" th:id="|question-${it.index}-option-a|" th:field="*{questions[__${it.index}__].selectedAns}" th:value="1"/>
+                <label th:for="|question-${it.index}-option-a|" th:text="${question.optionA}"></label>
+            </div>
+
+            <div class="option">
+                <input type="radio" th:id="|question-${it.index}-option-b|" th:field="*{questions[__${it.index}__].selectedAns}" th:value="2"/>
+                <label th:for="|question-${it.index}-option-b|" th:text="${question.optionB}"></label>
+            </div>
+
+            <div class="option">
+                <input type="radio" th:id="|question-${it.index}-option-c|" th:field="*{questions[__${it.index}__].selectedAns}" th:value="3"/>
+                <label th:for="|question-${it.index}-option-c|" th:text="${question.optionC}"></label>
+            </div>
+
+            <input type="hidden" th:field="*{questions[__${it.index}__].correctAns}" th:value="${question.correctAns}"/>
+        </div>
+
+        <input type="hidden" th:name="username" th:value="${username}">
+
+        <div class="submit-bar">
+            <button type="submit">Submit Answer</button>
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer.html :: footer}"></div>
+</body>
+</html>

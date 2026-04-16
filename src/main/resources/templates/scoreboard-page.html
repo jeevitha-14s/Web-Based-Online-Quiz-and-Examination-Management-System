@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/scoreboard-page.css(v=2)}">
+    <title>Quiz App | Scoreboard</title>
+</head>
+<body>
+<!-- NavBar -->
+<div th:replace="~{fragments/navbar.html :: navbar}"></div>
+
+<div class="container main-container">
+    <section class="scoreboard-card">
+        <div class="scoreboard-header">
+            <div>
+                <p class="eyebrow">Leaderboard</p>
+                <h1>Top Scores</h1>
+            </div>
+            <a class="home-link" th:href="@{/}">Start Quiz</a>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="result, it : ${results}">
+                    <td>
+                        <span class="rank" th:text="${it.index + 1}">1</span>
+                    </td>
+                    <td th:text="${result.username}"></td>
+                    <td>
+                        <span class="score" th:text="${result.totalCorrect}"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer.html :: footer}"></div>
+</body>
+</html>

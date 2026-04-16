@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/home-page.css(v=2)}">
+    <title>Quiz App | Start</title>
+</head>
+<body>
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar.html :: navbar}"></div>
+
+<div class="container main-container">
+    <div class="hero-copy">
+        <div class="hero-badge">
+            <span></span>
+            <p>Knowledge sprint</p>
+        </div>
+
+        <h1>Web-Based Online Quiz and Examination Management System</h>
+        <p class="hero-text">
+            
+        </p>
+
+        <div class="hero-actions" aria-label="Quiz highlights">
+            
+        </div>
+    </div>
+
+    <div class="start-card">
+        <div class="card-glow"></div>
+
+        <div class="image-container">
+            <img th:src="@{/images/exam.svg}" alt="Quiz illustration">
+        </div>
+
+        <form th:action="@{/quiz}" method="post">
+            <div class="form-heading">
+                <h2>Start your quiz</h2>
+                <p>Enter your name to begin.</p>
+            </div>
+
+            <label for="username">Your name</label>
+            <input type="text" id="username" name="username" placeholder="Enter your name" autocomplete="name" required/>
+
+            <button type="submit">Start Quiz</button>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer.html :: footer}"></div>
+</body>
+</html>
