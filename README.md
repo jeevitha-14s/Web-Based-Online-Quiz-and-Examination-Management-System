@@ -1,31 +1,89 @@
-# Responsive Quiz App Using Spring Boot
+# Quiz Web Application
 
-MCQ based quiz application using Spring Boot, Spring Data JPA, MySQL, Thymeleaf and Bootstrap 5.
-This project was made as a part of my channel's Spring Boot Tutorial series in Bangla.
-
-##### Check the video tutorial here: [Spring Boot Quiz App](https://youtu.be/BqLl7mckWv8)
+A full-stack quiz application built using Spring Boot that allows users to attempt quizzes, submit answers, and view their scores instantly.
 
 ---
 
-### Start Page
+## Tech Stack
 
-![Start Page](https://raw.githubusercontent.com/DevRezaur/spring-boot-quiz-app/refs/heads/main/screenshots/Start%20Page.PNG)
-
-### Quiz Page
-
-![Quiz Page 1](https://raw.githubusercontent.com/DevRezaur/spring-boot-quiz-app/refs/heads/main/screenshots/Quiz%20Page%201.PNG)
-
-![Quiz Page 2](https://raw.githubusercontent.com/DevRezaur/spring-boot-quiz-app/refs/heads/main/screenshots/Quiz%20Page%202.PNG)
-
-### Result Page
-
-![Result Page](https://raw.githubusercontent.com/DevRezaur/spring-boot-quiz-app/refs/heads/main/screenshots/Result%20Page.PNG)
-
-### Score Board
-
-![Score Board](https://raw.githubusercontent.com/DevRezaur/spring-boot-quiz-app/refs/heads/main/screenshots/Score%20Board.PNG)
+* **Backend:** Spring Boot
+* **Database:** H2 (In-Memory Database)
+* **Persistence:** Spring Data JPA (Hibernate)
+* **Frontend:** Thymeleaf (Server-side rendering)
+* **Build Tool:** Gradle
 
 ---
 
-### Have a nice day
-# Web-Based-Online-Quiz-and-Examination-Management-System
+## Features
+
+* 📝 Attempt quiz with multiple-choice questions
+* ⚡ Real-time answer evaluation
+* 📊 Score calculation and result display
+* 🗄️ In-memory database (no setup required)
+* 🌐 Simple and interactive UI
+
+---
+
+## Project Structure
+
+* `controller/` → Handles HTTP requests
+* `service/` → Business logic
+* `repository/` → Database operations
+* `model/` → Entity classes
+* `templates/` → Frontend (Thymeleaf HTML files)
+* `resources/` → Configuration files
+
+---
+
+## How to Run Locally
+
+1. Clone the repository:
+   git clone https://github.com/YOUR_USERNAME/quiz-web-app.git
+
+2. Navigate to the project folder:
+   cd quiz-web-app
+
+3. Run the application:
+   ./gradlew bootRun
+
+4. Open in browser:
+   http://localhost:8081
+
+---
+
+## H2 Database Console
+
+You can view the database in your browser:
+
+URL: http://localhost:8081/h2-console
+
+Credentials:
+
+* JDBC URL: jdbc:h2:mem:quiz-db
+* Username: root
+* Password: root
+
+---
+
+## Notes
+
+* Uses H2 in-memory database → data resets on restart
+* No external database setup required
+* Designed for learning and demonstration purposes
+
+---
+
+## Authors
+
+Jeevith
+
+---
+
+## Future Improvements
+
+* Add user authentication
+* Store quiz history
+* Add timer functionality
+* Improve UI/UX design
+
+---
