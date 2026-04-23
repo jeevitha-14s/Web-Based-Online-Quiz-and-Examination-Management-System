@@ -75,7 +75,10 @@ Credentials:
 
 ## Authors
 
-Jeevith
+Jeevitha S
+K L Sonika 
+Hrithik S P
+Kadirisani Neha
 
 ---
 

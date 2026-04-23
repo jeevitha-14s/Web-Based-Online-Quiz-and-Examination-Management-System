@@ -5,6 +5,8 @@ import com.devrezaur.main.model.QuestionForm;
 import com.devrezaur.main.model.Result;
 import com.devrezaur.main.repository.QuestionRepo;
 import com.devrezaur.main.repository.ResultRepo;
+import com.devrezaur.main.service.factory.ResultFactory;
+import com.devrezaur.main.service.scoring.ScoringStrategy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -20,6 +22,8 @@ public class QuizService {
 
   private final QuestionRepo questionRepo;
   private final ResultRepo resultRepo;
+  private final ScoringStrategy scoringStrategy;
+  private final ResultFactory resultFactory;
 
   public QuestionForm getQuestions() {
     List<Question> allQuestions = questionRepo.findAll();
@@ -36,16 +40,8 @@ public class QuizService {
   }
 
   public Result evaluateAndSaveResult(String username, QuestionForm questionForm) {
-    int totalCorrect = 0;
-    for (Question question : questionForm.getQuestions()) {
-      if (question.getCorrectAns() == question.getSelectedAns()) {
-        totalCorrect++;
-      }
-    }
-
-    Result result = new Result();
-    result.setUsername(username);
-    result.setTotalCorrect(totalCorrect);
+    int totalCorrect = scoringStrategy.calculateScore(questionForm);
+    Result result = resultFactory.createResult(username, totalCorrect);
     resultRepo.save(result);
 
     return result;
